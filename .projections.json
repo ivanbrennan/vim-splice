@@ -1,0 +1,10 @@
+{
+  "plugin/*.vim": {
+    "type": "plugin",
+    "alternate": "spec/plugin/splice_spec.rb"
+  },
+  "spec/plugin/*.rb": {
+    "type": "spec",
+    "alternate": "plugin/splice.vim"
+  }
+}
