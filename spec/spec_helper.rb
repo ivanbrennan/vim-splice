@@ -1,5 +1,8 @@
 require 'vimrunner'
 require 'vimrunner/rspec'
+require 'support/tmux'
+
+include Tmux
 
 ROOT = File.expand_path('../..', __FILE__)
 
@@ -25,4 +28,10 @@ RSpec.configure do |config|
   config.warnings = true
 
   config.order = :random
+end
+
+def refresh_tmux_sessions(session_names, &block)
+  session_names.each { |name| spawn_new_session!(name) }
+  yield
+  session_names.each { |name| kill_session(name) }
 end
